@@ -99,9 +99,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 095c43e758403f149b307516cad54b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isIgnoringInput: 0
   currShard: {fileID: 0}
   jumpForce: 180
-  moveSpd: 3
+  moveSpd: 200
   isOnGround: 0
 --- !u!50 &3308116200017645256
 Rigidbody2D:

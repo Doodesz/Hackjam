@@ -5,7 +5,8 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    public ShardBehaviour currShard;
+    public bool isIgnoringInput = false;
+    public Shard currShard;
 
     [SerializeField] float jumpForce;
     [SerializeField] float moveSpd;
@@ -29,7 +30,7 @@ public class PlayerController : MonoBehaviour
     {
         // Jump when up, w, or space is pressed
         if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
-            && isOnGround)
+            && isOnGround && !isIgnoringInput)
         {
             Jump();
         }
@@ -38,8 +39,10 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         // Moves player horizontally
-        horizontalAxis = Input.GetAxis("Horizontal");
-        rb.velocity = new Vector2(horizontalAxis * moveSpd, rb.velocity.y);        
+        horizontalAxis = Input.GetAxisRaw("Horizontal");
+
+        if (!isIgnoringInput)
+            rb.velocity = new Vector2(horizontalAxis * moveSpd * Time.deltaTime, rb.velocity.y);        
     }
 
     private void Jump()
@@ -62,16 +65,21 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<ShardBehaviour>(out ShardBehaviour shard) && !shard.isConnected)
+        Debug.Log("player hit triggerenter");
+
+        if (collision.TryGetComponent<Shard>(out Shard shard) && !shard.isConnected)
         {
+            Debug.Log("condition getcomponent shard hit");
             // If currently drawing lines and hit matching shard, connect both
-            if (currShard != null && currShard.shardColor == shard.shardColor
+            if (currShard != null && currShard.shardColor.ToString() == shard.shardColor.ToString() // tostring to fix bug
                 && currShard.gameObject != collision.gameObject)
             {
                 shard.ConnectShard();
                 currShard.ConnectShard();
-                currShard.GetComponent<DrawLine>().FixLine(shard.gameObject);
+                currShard.GetComponent<ShardLine>().FixLine(shard.gameObject);
+                Debug.Log("condition connect shard hit");
             }
+
         }
     }
 }

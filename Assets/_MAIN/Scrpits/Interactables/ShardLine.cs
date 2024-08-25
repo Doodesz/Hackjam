@@ -4,14 +4,15 @@ using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using UnityEngine;
 
-[RequireComponent(typeof(ShardBehaviour))]
-public class DrawLine : MonoBehaviour
+[RequireComponent(typeof(Shard))]
+public class ShardLine : MonoBehaviour
 {
     public bool isDrawing;
 
+    float initWidth;
     [SerializeField] float minDistance;
     [SerializeField] float currLength = 0;
-    [SerializeField] float maxLength;
+    [SerializeField][Range(1f,50f)] float maxLength;
 
     private LineRenderer line;
     private Vector3 prevPos;
@@ -22,6 +23,9 @@ public class DrawLine : MonoBehaviour
         line = GetComponent<LineRenderer>();
         prevPos = transform.position;
         line.positionCount = 0;
+
+        initWidth = maxLength / 50;
+        line.startWidth = initWidth;
     }
 
     // Update is called once per frame
@@ -30,7 +34,7 @@ public class DrawLine : MonoBehaviour
         Vector3 currPos = PlayerController.Instance.gameObject.transform.position;
         float distance = Vector3.Distance(prevPos, currPos);
 
-        if (isDrawing && !GetComponent<ShardBehaviour>().isConnected)
+        if (isDrawing && !GetComponent<Shard>().isConnected)
         {
             if (distance > minDistance)
             {
@@ -46,7 +50,7 @@ public class DrawLine : MonoBehaviour
         }
     }
 
-    void SnapLine()
+    public void SnapLine()
     {
         PlayerController.Instance.currShard = null;
         Debug.Log("Line snapped");
@@ -62,6 +66,7 @@ public class DrawLine : MonoBehaviour
 
         line.positionCount++;
         line.SetPosition(line.positionCount - 1, currPos);
+        line.endWidth = initWidth * ((maxLength - currLength) / maxLength);
     }
 
     public void FixLine(GameObject endLine)
