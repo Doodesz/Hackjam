@@ -42,12 +42,19 @@ public class PlayerController : MonoBehaviour
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 
         if (!isIgnoringInput)
-            rb.velocity = new Vector2(horizontalAxis * moveSpd * Time.deltaTime, rb.velocity.y);        
+            rb.velocity = new Vector3(horizontalAxis * moveSpd * Time.deltaTime, rb.velocity.y);
+        else
+            rb.velocity = Vector3.zero;
     }
 
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    public void StopMovement()
+    {
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -65,19 +72,16 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("player hit triggerenter");
-
         if (collision.TryGetComponent<Shard>(out Shard shard) && !shard.isConnected)
         {
-            Debug.Log("condition getcomponent shard hit");
             // If currently drawing lines and hit matching shard, connect both
-            if (currShard != null && currShard.shardColor.ToString() == shard.shardColor.ToString() // tostring to fix bug
+            if (currShard != null && currShard.parent == shard.parent
                 && currShard.gameObject != collision.gameObject)
             {
                 shard.ConnectShard();
                 currShard.ConnectShard();
                 currShard.GetComponent<ShardLine>().FixLine(shard.gameObject);
-                Debug.Log("condition connect shard hit");
+                currShard = null;
             }
 
         }

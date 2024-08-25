@@ -5,9 +5,9 @@ using UnityEngine;
 [RequireComponent(typeof(ShardLine))]
 public class Shard : MonoBehaviour
 {
-    public ShardColorEnum.ShardColor shardColor;
     public bool isConnected;
     public bool canBeInteracted;
+    public GameObject parent;
 
     [SerializeField] List<EventObject> objectsToTriggers = new List<EventObject>();
     Animator animator;
@@ -17,18 +17,23 @@ public class Shard : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         shardLine = GetComponent<ShardLine>();
-        Debug.Log(shardColor.ToString());
+        parent = transform.parent.gameObject;
     }
 
     private void Update()
     {
-        if (canBeInteracted && Input.GetKeyDown(KeyCode.F) && PlayerController.Instance.currShard == null)
+        if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
         {
-            PlayerController.Instance.currShard = this;
-            shardLine.isDrawing = true;
+            if (PlayerController.Instance.currShard == null)
+            {
+                PlayerController.Instance.currShard = this;
+                shardLine.isDrawing = true;
+            }
+            else if (PlayerController.Instance.currShard == this)
+            {
+                shardLine.SnapLine();
+            }
         }
-        Debug.Log(shardColor.ToString());
-
     }
 
     public void ConnectShard()
@@ -39,7 +44,7 @@ public class Shard : MonoBehaviour
         line.isDrawing = false;
         foreach (EventObject obj in objectsToTriggers)
             obj.TriggerEvent();
-        Debug.Log("Shard " + shardColor.ToString() + " connected");
+        Debug.Log("Shard from parent " + transform.parent.gameObject + " connected");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

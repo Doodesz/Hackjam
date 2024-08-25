@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 7355111316503374320}
   - component: {fileID: 678918346156627007}
   - component: {fileID: 975684583372244871}
-  - component: {fileID: 5923700416084980713}
   m_Layer: 0
   m_Name: Shard
   m_TagString: shard
@@ -373,9 +372,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e04b37ce46a98c842affa054a3fc96e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shardColor: 2
   isConnected: 0
   canBeInteracted: 0
+  parent: {fileID: 0}
   objectsToTriggers: []
 --- !u!114 &8651917214088908664
 MonoBehaviour:
@@ -575,19 +574,3 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5923700416084980713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4338739959558871139}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e04b37ce46a98c842affa054a3fc96e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shardColor: 0
-  isConnected: 0
-  canBeInteracted: 0
-  objectsToTriggers: []
