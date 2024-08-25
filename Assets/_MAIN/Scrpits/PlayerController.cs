@@ -5,10 +5,13 @@ using UnityEngine.Tilemaps;
 
 public class PlayerController : MonoBehaviour
 {
-    private float horizontalAxis;
+    public ShardBehaviour currShard;
+
     [SerializeField] float jumpForce;
     [SerializeField] float moveSpd;
-    public ShardBehaviour currShard;
+    [SerializeField] bool isOnGround;
+
+    float horizontalAxis;
     Rigidbody2D rb;
 
     public static PlayerController Instance;
@@ -24,7 +27,9 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        // Jump when up, w, or space is pressed
+        if ((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.Space))
+            && isOnGround)
         {
             Jump();
         }
@@ -32,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        // Moves player horizontally
         horizontalAxis = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(horizontalAxis * moveSpd, rb.velocity.y);        
     }
@@ -39,6 +45,19 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ground"))
+            isOnGround = true;
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("ground"))
+            isOnGround = false;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - shard
+  - ground
   layers:
   - Default
   - TransparentFX

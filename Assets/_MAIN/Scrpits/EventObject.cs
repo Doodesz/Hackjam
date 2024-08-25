@@ -4,15 +4,8 @@ using UnityEngine;
 
 public class EventObject : MonoBehaviour
 {
-    [SerializeField] GameObject objToOpen;
-
     public void TriggerEvent()
     {
-        objToOpen.SetActive(false);
-    }
-
-    public void StartDrawingLine()
-    {
-        GetComponent<DrawLine>().isDrawing = true;
+        gameObject.SetActive(false);
     }
 }
