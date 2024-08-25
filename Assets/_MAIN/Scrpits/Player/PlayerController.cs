@@ -64,17 +64,13 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.TryGetComponent<ShardBehaviour>(out ShardBehaviour shard) && !shard.isConnected)
         {
-            if (currShard != null && currShard.thisShardColor == shard.thisShardColor 
+            // If currently drawing lines and hit matching shard, connect both
+            if (currShard != null && currShard.shardColor == shard.shardColor
                 && currShard.gameObject != collision.gameObject)
             {
                 shard.ConnectShard();
                 currShard.ConnectShard();
                 currShard.GetComponent<DrawLine>().FixLine(shard.gameObject);
-            }
-            else if (!shard.GetComponent<DrawLine>().isDrawing)
-            {
-                currShard = shard;
-                shard.GetComponent<DrawLine>().isDrawing = true;
             }
         }
     }
