@@ -13,17 +13,19 @@ public class ShardLine : MonoBehaviour
     [SerializeField] float minDistance;
     [SerializeField] float currLength = 0;
     [SerializeField][Range(1f,50f)] float maxLength;
-
-    private LineRenderer line;
-    private Vector3 prevPos;
+    [SerializeField] Shard shard;
+    
+    LineRenderer line;
+    Vector3 prevPos;
 
     // Start is called before the first frame update
     void Start()
     {
         line = GetComponent<LineRenderer>();
+        shard = GetComponent<Shard>();
+
         prevPos = transform.position;
         line.positionCount = 0;
-
         initWidth = maxLength / 50;
         line.startWidth = initWidth;
     }
@@ -53,7 +55,16 @@ public class ShardLine : MonoBehaviour
     public void SnapLine()
     {
         PlayerController.Instance.currShard = null;
+        ResetLine();
+
+        shard.isConnected = false;
+        shard.connectedShard = null;
+
         Debug.Log("Line snapped");
+    }
+
+    private void ResetLine()
+    {
         isDrawing = false;
         currLength = 0;
         line.positionCount = 0;

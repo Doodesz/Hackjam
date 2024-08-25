@@ -6,33 +6,47 @@ using UnityEngine;
 public class Shard : MonoBehaviour
 {
     public bool isConnected;
+    public Shard connectedShard;
     public bool canBeInteracted;
     public GameObject parent;
 
     [SerializeField] List<EventObject> objectsToTriggers = new List<EventObject>();
     Animator animator;
     ShardLine shardLine;
+    //PlayerController playerController;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         shardLine = GetComponent<ShardLine>();
         parent = transform.parent.gameObject;
+        //playerController = PlayerController.Instance;
     }
 
     private void Update()
     {
         if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
         {
-            if (PlayerController.Instance.currShard == null)
+            // If not currently drawing line, draw this shard's line
+            if (!isConnected && PlayerController.Instance.currShard == null)
             {
                 PlayerController.Instance.currShard = this;
                 shardLine.isDrawing = true;
             }
-            else if (PlayerController.Instance.currShard == this)
+
+            // If currently connected, snap it
+            else if (isConnected)
             {
+                connectedShard.shardLine.SnapLine();
                 shardLine.SnapLine();
             }
+
+            // If interacting with the same shard, snap it
+            else if (PlayerController.Instance.currShard == this)
+                shardLine.SnapLine();
+
+            else
+                PlayerController.Instance.ConnectShards(this);
         }
     }
 

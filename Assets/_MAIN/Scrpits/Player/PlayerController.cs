@@ -6,11 +6,11 @@ using UnityEngine.Tilemaps;
 public class PlayerController : MonoBehaviour
 {
     public bool isIgnoringInput = false;
+    public bool isOnGround;
     public Shard currShard;
 
     [SerializeField] float jumpForce;
     [SerializeField] float moveSpd;
-    [SerializeField] bool isOnGround;
 
     float horizontalAxis;
     Rigidbody2D rb;
@@ -52,25 +52,7 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    public void StopMovement()
-    {
-
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("ground"))
-            isOnGround = true;
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("ground"))
-            isOnGround = false;
-        
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
+    /*private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<Shard>(out Shard shard) && !shard.isConnected)
         {
@@ -78,12 +60,20 @@ public class PlayerController : MonoBehaviour
             if (currShard != null && currShard.parent == shard.parent
                 && currShard.gameObject != collision.gameObject)
             {
-                shard.ConnectShard();
-                currShard.ConnectShard();
-                currShard.GetComponent<ShardLine>().FixLine(shard.gameObject);
-                currShard = null;
+                ConnectShards(shard);
             }
 
         }
+    }*/
+
+    public void ConnectShards(Shard otherShard)
+    {
+        otherShard.ConnectShard();
+        currShard.ConnectShard();
+        otherShard.connectedShard = currShard;
+        currShard.connectedShard = otherShard;
+        currShard.GetComponent<ShardLine>().FixLine(otherShard.gameObject);
+        currShard = null;
+
     }
 }
