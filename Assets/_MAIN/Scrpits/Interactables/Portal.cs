@@ -40,16 +40,20 @@ public class Portal : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             canBeInteracted = true;
-            animator.Play("show prompt");
+
+            if (gameObject.activeInHierarchy)
+                animator.Play("show prompt");
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player") && gameObject.activeInHierarchy) //activeinhierarchy to avoid error logs
+        if (collision.gameObject.CompareTag("Player")) //activeinhierarchy to avoid error logs
         {
             canBeInteracted = false;
-            animator.Play("hide prompt");
+
+            if (gameObject.activeInHierarchy)
+                animator.Play("hide prompt");
         }
     }
 }

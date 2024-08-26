@@ -7,6 +7,7 @@ TagManager:
   - shard
   - ground
   - world
+  - box
   layers:
   - Default
   - TransparentFX
