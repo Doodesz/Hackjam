@@ -27,6 +27,11 @@ public class Portal : MonoBehaviour
             Debug.Log("Entered portal");
             
             worldManager.EnterWorld(worldToEnter, name);
+
+            if (PlayerController.Instance.currShard !=  null)
+            {
+                PlayerController.Instance.currShard.GetComponent<ShardLine>().SnapLine();
+            }
         }
     }
 

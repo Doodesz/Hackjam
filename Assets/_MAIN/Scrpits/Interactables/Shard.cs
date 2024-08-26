@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(ShardLine))]
 public class Shard : MonoBehaviour
 {
     public bool isConnected;
@@ -13,14 +12,12 @@ public class Shard : MonoBehaviour
     [SerializeField] List<EventObject> objectsToTriggers = new List<EventObject>();
     Animator animator;
     ShardLine shardLine;
-    //PlayerController playerController;
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         shardLine = GetComponent<ShardLine>();
         parent = transform.parent.gameObject;
-        //playerController = PlayerController.Instance;
     }
 
     private void Update()
@@ -38,13 +35,13 @@ public class Shard : MonoBehaviour
             else if (isConnected && PlayerController.Instance.currShard == null)
             {
                 connectedShard.shardLine.SnapLine(true);
-                shardLine.SnapLine(true);
+                shardLine.SnapLine(true, true);
             }
 
             // Replaces currently connected shard with currShard
             else if (isConnected && PlayerController.Instance.currShard != null)
             {
-                connectedShard.shardLine.SnapLine();
+                connectedShard.shardLine.SnapLine(triggerEvent: true);
                 shardLine.SnapLine();
                 PlayerController.Instance.ConnectShards(this);
             }
@@ -65,9 +62,16 @@ public class Shard : MonoBehaviour
 
         isConnected = true;
         line.isDrawing = false;
+        TriggerEvents();
+        EndPortal.Instance.UpdateProgress();
+
+        Debug.Log("Shard from parent " + transform.parent.gameObject + " connected");
+    }
+
+    public void TriggerEvents()
+    {
         foreach (EventObject obj in objectsToTriggers)
             obj.TriggerEvent();
-        Debug.Log("Shard from parent " + transform.parent.gameObject + " connected");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

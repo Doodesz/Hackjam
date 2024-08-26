@@ -52,10 +52,16 @@ public class ShardLine : MonoBehaviour
         }
     }
 
-    public void SnapLine(bool snapPlayerCurrShard = false)
+    public void SnapLine(bool snapPlayerCurrShard = false, bool triggerEvent = false)
     {
         if (snapPlayerCurrShard)
             PlayerController.Instance.currShard = null;
+        if (triggerEvent)
+        {
+            shard.TriggerEvents();
+            shard.connectedShard.TriggerEvents();
+        }
+        
         ResetLine();
 
         shard.isConnected = false;

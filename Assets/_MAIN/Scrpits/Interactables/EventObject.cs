@@ -6,6 +6,6 @@ public class EventObject : MonoBehaviour
 {
     public void TriggerEvent()
     {
-        gameObject.SetActive(false);
+        gameObject.SetActive(!gameObject.activeSelf);
     }
 }
