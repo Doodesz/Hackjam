@@ -18,6 +18,7 @@ public class EndPortal : MonoBehaviour
 
     private void OnEnable()
     {
+        // Fix bug portal don't open when in another world
         if (isOpen)
             animator.SetBool("isOpened", true);
     }

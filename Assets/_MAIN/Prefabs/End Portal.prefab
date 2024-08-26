@@ -102,9 +102,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   canBeInteracted: 0
   isOpen: 0
-  shardCount: 0
-  connectedShardCount: 0
-  shards: []
 --- !u!95 &3112022830103884404
 Animator:
   serializedVersion: 5
