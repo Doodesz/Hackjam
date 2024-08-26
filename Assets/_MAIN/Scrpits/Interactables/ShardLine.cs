@@ -47,14 +47,15 @@ public class ShardLine : MonoBehaviour
             }
             if (currLength > maxLength)
             {
-                SnapLine();
+                SnapLine(true);
             }
         }
     }
 
-    public void SnapLine()
+    public void SnapLine(bool snapPlayerCurrShard = false)
     {
-        PlayerController.Instance.currShard = null;
+        if (snapPlayerCurrShard)
+            PlayerController.Instance.currShard = null;
         ResetLine();
 
         shard.isConnected = false;

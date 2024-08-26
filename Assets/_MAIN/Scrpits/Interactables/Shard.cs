@@ -35,17 +35,26 @@ public class Shard : MonoBehaviour
             }
 
             // If currently connected, snap it
-            else if (isConnected)
+            else if (isConnected && PlayerController.Instance.currShard == null)
+            {
+                connectedShard.shardLine.SnapLine(true);
+                shardLine.SnapLine(true);
+            }
+
+            // Replaces currently connected shard with currShard
+            else if (isConnected && PlayerController.Instance.currShard != null)
             {
                 connectedShard.shardLine.SnapLine();
                 shardLine.SnapLine();
+                PlayerController.Instance.ConnectShards(this);
             }
 
             // If interacting with the same shard, snap it
             else if (PlayerController.Instance.currShard == this)
-                shardLine.SnapLine();
+                shardLine.SnapLine(true);
 
-            else
+            // Connect both shards
+            else if (PlayerController.Instance.currShard != this)
                 PlayerController.Instance.ConnectShards(this);
         }
     }

@@ -52,20 +52,6 @@ public class PlayerController : MonoBehaviour
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
     }
 
-    /*private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<Shard>(out Shard shard) && !shard.isConnected)
-        {
-            // If currently drawing lines and hit matching shard, connect both
-            if (currShard != null && currShard.parent == shard.parent
-                && currShard.gameObject != collision.gameObject)
-            {
-                ConnectShards(shard);
-            }
-
-        }
-    }*/
-
     public void ConnectShards(Shard otherShard)
     {
         otherShard.ConnectShard();
