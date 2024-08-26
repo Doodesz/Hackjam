@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class EndPortal : MonoBehaviour
 {
+    [SerializeField] bool canBeInteracted;
     [SerializeField] bool isOpen;
-    [SerializeField] int shardCount;
-    [SerializeField] int connectedShardCount;
-    [SerializeField] Shard[] shards;
+    
+    Animator animator;
 
     public static EndPortal Instance;
 
@@ -16,29 +16,53 @@ public class EndPortal : MonoBehaviour
         Instance = this;
     }
 
+    private void OnEnable()
+    {
+        if (isOpen)
+            animator.SetBool("isOpened", true);
+    }
+
     private void Start()
     {
-        shards = GameObject.FindObjectsOfType<Shard>(includeInactive: true);
-        shardCount = shards.Length;
+        animator = GetComponent<Animator>();
     }
 
-    public void UpdateProgress()
+    private void Update()
     {
-        connectedShardCount = 0;
-
-        foreach (Shard shard in shards)
+        if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
         {
-            if (shard.isConnected)
-                connectedShardCount++;
+            if (isOpen)
+            {
+                Debug.Log("Go to next level");
+                // go to next level
+            }
         }
-
-        if (connectedShardCount == shardCount)
-            OpenPortal();
     }
 
-    void OpenPortal()
+
+    public void OpenPortal()
     {
         isOpen = true;
+        if (isActiveAndEnabled)
+            animator.SetBool("isOpened", true);
         Debug.Log("End Portal opened");
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canBeInteracted = true;
+            animator.Play("show prompt");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            canBeInteracted = false;
+            animator.Play("hide prompt");
+        }
     }
 }

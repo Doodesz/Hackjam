@@ -39,7 +39,8 @@ public class Shard : MonoBehaviour
             }
 
             // Replaces currently connected shard with currShard
-            else if (isConnected && PlayerController.Instance.currShard != null)
+            else if (isConnected && PlayerController.Instance.currShard != null
+                && parent == PlayerController.Instance.currShard.parent)
             {
                 connectedShard.shardLine.SnapLine(triggerEvent: true);
                 shardLine.SnapLine();
@@ -51,7 +52,8 @@ public class Shard : MonoBehaviour
                 shardLine.SnapLine(true);
 
             // Connect both shards
-            else if (PlayerController.Instance.currShard != this)
+            else if (PlayerController.Instance.currShard != this
+                && parent == PlayerController.Instance.currShard.parent)
                 PlayerController.Instance.ConnectShards(this);
         }
     }
@@ -63,7 +65,7 @@ public class Shard : MonoBehaviour
         isConnected = true;
         line.isDrawing = false;
         TriggerEvents();
-        EndPortal.Instance.UpdateProgress();
+        GameManager.Instance.UpdateProgress();
 
         Debug.Log("Shard from parent " + transform.parent.gameObject + " connected");
     }
