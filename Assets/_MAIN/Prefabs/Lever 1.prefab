@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 8519309792654876947}
   - component: {fileID: 1182362190866841361}
   m_Layer: 0
-  m_Name: Lever
+  m_Name: Lever 1
   m_TagString: shard
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -31,7 +31,8 @@ public class Plate : MonoBehaviour
             {
                 isPressed = true;
                 TriggerEvent();
-                animator.Play("pressed");
+                if (gameObject.activeInHierarchy)
+                    animator.Play("pressed");
             }
 
             // Adds current object to a list of objects pressing the plate
@@ -53,7 +54,8 @@ public class Plate : MonoBehaviour
             if (objectsOnPlate.Count == 0)
             {
                 TriggerEvent();
-                animator.Play("released");
+                if (gameObject.activeInHierarchy)
+                    animator.Play("released");
                 isPressed = false;
             }
         }
