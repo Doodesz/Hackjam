@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -62,8 +63,14 @@ public class WorldManager : MonoBehaviour
         // Moves player position
         Vector3 targetPos = FindPortalPositionName(targetPortalName);
         PlayerController.Instance.gameObject.transform.position = targetPos;
-        Camera.main.gameObject.transform.position = targetPos;
         PlayerController.Instance.isIgnoringInput = false;
+
+        // Camera shits
+        /*Camera.main.GetComponent<CinemachineConfiner2D>().m_BoundingShape2D           //Makes issues
+            = GameObject.Find("Camera Confiner").GetComponent<PolygonCollider2D>();*/
+        Camera.main.GetComponent<CinemachineVirtualCamera>().Follow = null;
+        Camera.main.gameObject.transform.position = targetPos;
+        Camera.main.GetComponent<CinemachineVirtualCamera>().Follow = PlayerController.Instance.gameObject.transform;
 
         currWorld = targetWorld;
         targetWorld = null;

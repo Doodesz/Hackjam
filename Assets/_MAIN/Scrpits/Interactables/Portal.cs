@@ -31,6 +31,7 @@ public class Portal : MonoBehaviour
             if (PlayerController.Instance.currShard !=  null)
             {
                 PlayerController.Instance.currShard.GetComponent<ShardLine>().SnapLine();
+                PlayerController.Instance.currShard.GetComponent<Shard>().ResetAllWallsLayer();
             }
         }
     }

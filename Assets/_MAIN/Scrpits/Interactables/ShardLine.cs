@@ -47,6 +47,7 @@ public class ShardLine : MonoBehaviour
             }
             if (currLength > maxLength)
             {
+                shard.ResetAllWallsLayer();
                 SnapLine(true);
             }
         }
@@ -83,7 +84,7 @@ public class ShardLine : MonoBehaviour
         Vector3 currPos = PlayerController.Instance.gameObject.transform.position;
 
         line.positionCount++;
-        line.SetPosition(line.positionCount - 1, currPos + new Vector3(0,0,-0.1f));
+        line.SetPosition(line.positionCount - 1, currPos);
         line.endWidth = initWidth * ((maxLength - currLength) / maxLength);
     }
 

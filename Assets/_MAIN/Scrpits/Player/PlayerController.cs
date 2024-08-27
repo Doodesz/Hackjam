@@ -34,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             Jump();
         }
+
     }
 
     private void FixedUpdate()
@@ -42,7 +43,7 @@ public class PlayerController : MonoBehaviour
         horizontalAxis = Input.GetAxisRaw("Horizontal");
 
         if (!isIgnoringInput)
-            rb.velocity = new Vector3(horizontalAxis * moveSpd * Time.deltaTime, rb.velocity.y);
+            rb.velocity = new Vector3(moveSpd * horizontalAxis * Time.deltaTime, rb.velocity.y);
         else
             rb.velocity = Vector3.zero;
     }

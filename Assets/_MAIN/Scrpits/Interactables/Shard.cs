@@ -10,6 +10,8 @@ public class Shard : MonoBehaviour
     public GameObject parent;
 
     [SerializeField] List<EventObject> objectsToTriggers = new List<EventObject>();
+    //[SerializeField] List<SpecialWall> specialWallsAffected = new List<SpecialWall>();
+
     Animator animator;
     ShardLine shardLine;
 
@@ -29,6 +31,7 @@ public class Shard : MonoBehaviour
             {
                 PlayerController.Instance.currShard = this;
                 shardLine.isDrawing = true;
+                MakeMatchingWallsIgnorePlayer();
             }
 
             // If currently connected, snap it
@@ -36,6 +39,7 @@ public class Shard : MonoBehaviour
             {
                 connectedShard.shardLine.SnapLine(true);
                 shardLine.SnapLine(true, true);
+                ResetAllWallsLayer();
             }
 
             // Replaces currently connected shard with currShard
@@ -45,16 +49,42 @@ public class Shard : MonoBehaviour
                 connectedShard.shardLine.SnapLine(triggerEvent: true);
                 shardLine.SnapLine();
                 PlayerController.Instance.ConnectShards(this);
+                ResetAllWallsLayer();
             }
 
             // If interacting with the same shard, snap it
             else if (PlayerController.Instance.currShard == this)
+            {
                 shardLine.SnapLine(true);
+                ResetAllWallsLayer();
+            }
 
             // Connect both shards
             else if (PlayerController.Instance.currShard != this
                 && parent == PlayerController.Instance.currShard.parent)
+            {
                 PlayerController.Instance.ConnectShards(this);
+                ResetAllWallsLayer();
+            }
+        }
+    }
+
+    public void MakeMatchingWallsIgnorePlayer()
+    {
+        SpecialWall[] specialWalls = GameObject.FindObjectsOfType<SpecialWall>();
+        foreach (SpecialWall wall in specialWalls)
+        {
+            if (wall.transform.parent == this.gameObject.transform.parent)
+                wall.gameObject.layer = 6;
+        }
+    }
+
+    public void ResetAllWallsLayer()
+    {
+        SpecialWall[] specialWalls = GameObject.FindObjectsOfType<SpecialWall>();
+        foreach (SpecialWall wall in specialWalls)
+        {
+            wall.gameObject.layer = 0;
         }
     }
 

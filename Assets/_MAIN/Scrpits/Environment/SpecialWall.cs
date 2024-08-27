@@ -4,22 +4,20 @@ using UnityEngine;
 
 public class SpecialWall : MonoBehaviour
 {
-    void ResetExcludeCollision()
-    {
+    BoxCollider2D boxCollider;
 
+    private void Start()
+    {
+        boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    void ExcludePlayerCollision()
+    public void ResetLayer()
     {
-
+        gameObject.layer = 0;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    public void SetIgnorePlayerLayer()
     {
-        if (collision.gameObject.CompareTag("player") 
-            && PlayerController.Instance.currShard.parent == collision.gameObject.transform.parent)
-        {
-
-        }
+        gameObject.layer = 6;
     }
 }
