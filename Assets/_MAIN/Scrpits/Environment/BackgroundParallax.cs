@@ -15,7 +15,7 @@ public class BackgroundParallax : MonoBehaviour
         cam = Camera.main.gameObject;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 camPos = cam.transform.position;
 
