@@ -20,6 +20,15 @@ public class Box : MonoBehaviour
         particle = GetComponent<ParticleSystem>();
     }
 
+    private void OnEnable()
+    {
+        if (respawnable)
+        {
+            particle.Play();
+            spawnPoint.GetComponent<ParticleSystem>().Stop();
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

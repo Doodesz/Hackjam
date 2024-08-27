@@ -83,13 +83,13 @@ public class ShardLine : MonoBehaviour
         Vector3 currPos = PlayerController.Instance.gameObject.transform.position;
 
         line.positionCount++;
-        line.SetPosition(line.positionCount - 1, currPos);
+        line.SetPosition(line.positionCount - 1, currPos + new Vector3(0,0,-0.1f));
         line.endWidth = initWidth * ((maxLength - currLength) / maxLength);
     }
 
     public void FixLine(GameObject endLine)
     {
-        line.Simplify(0.1f);
+        line.Simplify(0.05f);
         line.SetPosition(0, transform.position);
         line.SetPosition(line.positionCount - 1, endLine.gameObject.transform.position);
     }
