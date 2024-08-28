@@ -10,7 +10,6 @@ public class Shard : MonoBehaviour
     public GameObject parent;
 
     [SerializeField] List<EventObject> objectsToTriggers = new List<EventObject>();
-    //[SerializeField] List<SpecialWall> specialWallsAffected = new List<SpecialWall>();
 
     Animator animator;
     ShardLine shardLine;
@@ -71,7 +70,7 @@ public class Shard : MonoBehaviour
 
     public void MakeMatchingWallsIgnorePlayer()
     {
-        SpecialWall[] specialWalls = GameObject.FindObjectsOfType<SpecialWall>();
+        SpecialWall[] specialWalls = GameObject.FindObjectsOfType<SpecialWall>(includeInactive: true);
         foreach (SpecialWall wall in specialWalls)
         {
             if (wall.transform.parent == this.gameObject.transform.parent)
@@ -81,7 +80,7 @@ public class Shard : MonoBehaviour
 
     public void ResetAllWallsLayer()
     {
-        SpecialWall[] specialWalls = GameObject.FindObjectsOfType<SpecialWall>();
+        SpecialWall[] specialWalls = GameObject.FindObjectsOfType<SpecialWall>(includeInactive: true);
         foreach (SpecialWall wall in specialWalls)
         {
             wall.gameObject.layer = 0;
