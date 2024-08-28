@@ -39,6 +39,6 @@ public class ScreenTransition : MonoBehaviour
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        TransitionIn();
+        TransitionOut();
     }
 }

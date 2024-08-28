@@ -196,7 +196,7 @@ MonoBehaviour:
   isOnGround: 0
   currShard: {fileID: 0}
   anim: {fileID: 0}
-  jumpForce: 180
+  jumpForce: 120
   moveSpd: 200
 --- !u!50 &3308116200017645256
 Rigidbody2D:
@@ -213,7 +213,7 @@ Rigidbody2D:
   m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 2
   m_Material: {fileID: 6200000, guid: 42de983039b92c547bfc50c98d44b287, type: 2}
   m_IncludeLayers:
     serializedVersion: 2

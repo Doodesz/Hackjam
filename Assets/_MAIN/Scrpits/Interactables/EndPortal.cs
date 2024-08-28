@@ -1,13 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class EndPortal : MonoBehaviour
 {
     [SerializeField] bool canBeInteracted;
     [SerializeField] bool isOpen;
+    [SerializeField] bool isGoingToNextLevel;
+    [SerializeField] string nextLevelSceneName;
     
     Animator animator;
+    ScreenTransition transition;
 
     public static EndPortal Instance;
 
@@ -26,6 +30,7 @@ public class EndPortal : MonoBehaviour
     private void Start()
     {
         animator = GetComponent<Animator>();
+        transition = ScreenTransition.Instance;
     }
 
     private void Update()
@@ -35,11 +40,20 @@ public class EndPortal : MonoBehaviour
             if (isOpen)
             {
                 Debug.Log("Go to next level");
-                // go to next level
+                GoToNextLevel();
+                PlayerController.Instance.isIgnoringInput = true;
             }
         }
+
+        if (isGoingToNextLevel && transition.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("blank"))
+            SceneManager.LoadScene(nextLevelSceneName);
     }
 
+    public void GoToNextLevel()
+    {
+        isGoingToNextLevel = true;
+        ScreenTransition.Instance.TransitionIn();
+    }
 
     public void OpenPortal()
     {
