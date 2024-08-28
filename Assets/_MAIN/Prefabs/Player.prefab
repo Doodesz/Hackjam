@@ -103,6 +103,7 @@ GameObject:
   - component: {fileID: 1701284935756447706}
   - component: {fileID: 3308116200017645256}
   - component: {fileID: 6288017316399784434}
+  - component: {fileID: 7052907919854869360}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -167,7 +168,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 4
-  m_Sprite: {fileID: -270111877, guid: f8383a043390b4f469c49f86e6330615, type: 3}
+  m_Sprite: {fileID: -1128102659, guid: 9b6bd046fe854bb488e1a98cd1d0fbb2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -193,6 +194,7 @@ MonoBehaviour:
   isIgnoringInput: 0
   isOnGround: 0
   currShard: {fileID: 0}
+  anim: {fileID: 0}
   jumpForce: 180
   moveSpd: 200
 --- !u!50 &3308116200017645256
@@ -257,7 +259,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: -0.48}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.53}
+    pivot: {x: 0.5, y: 0.54}
     oldSize: {x: 2, y: 2}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -268,9 +270,30 @@ PolygonCollider2D:
     m_Paths:
     - - {x: -0.35, y: 1.3}
       - {x: -0.35, y: -0.5}
-      - {x: -0.2, y: -0.5}
-      - {x: 0, y: -0.507}
-      - {x: 0.2, y: -0.5}
+      - {x: -0.32, y: -0.5}
+      - {x: 0, y: -0.505}
+      - {x: 0.32, y: -0.5}
       - {x: 0.35, y: -0.5}
       - {x: 0.35, y: 1.3}
   m_UseDelaunayMesh: 0
+--- !u!95 &7052907919854869360
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5368141198632177730}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e3d07fec0620cdc4baadf94c6e0578f5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

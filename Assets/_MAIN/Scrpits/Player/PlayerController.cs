@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     public bool isIgnoringInput = false;
     public bool isOnGround;
     public Shard currShard;
+    public Animator anim;
 
     [SerializeField] float jumpForce;
     [SerializeField] float moveSpd;
@@ -21,8 +22,9 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         Instance = this;
-        rb = GetComponent<Rigidbody2D>();
         currShard = null;
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -35,13 +37,31 @@ public class PlayerController : MonoBehaviour
             Jump();
         }
 
+        if (rb.velocity.y < 0 && !isOnGround)
+        {
+            anim.SetBool("isJumping", false);
+            anim.SetBool("isFalling", true);
+        }
+        else if (rb.velocity.y !> 0.01f)
+            anim.SetBool("isJumping", false);
     }
 
     private void FixedUpdate()
-    {
-        // Moves player horizontally
+    { 
+        // Sets appropriate animation
         horizontalAxis = Input.GetAxisRaw("Horizontal");
+        if (horizontalAxis > 0 || horizontalAxis < 0)
+        {
+            anim.SetBool("isRunning", true);
+            if (horizontalAxis > 0)
+                transform.localScale = new Vector3(1, 1, 1);
+            else
+                transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+            anim.SetBool("isRunning", false);
 
+        // Moves player horizontally
         if (!isIgnoringInput)
             rb.velocity = new Vector3(moveSpd * horizontalAxis * Time.deltaTime, rb.velocity.y);
         else
@@ -51,6 +71,9 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        anim.SetBool("isJumping", true);
+        anim.SetBool("isFalling", false);
+        anim.Play("jump");
     }
 
     public void ConnectShards(Shard otherShard)
@@ -61,6 +84,5 @@ public class PlayerController : MonoBehaviour
         currShard.connectedShard = otherShard;
         currShard.GetComponent<ShardLine>().FixLine(otherShard.gameObject);
         currShard = null;
-
     }
 }

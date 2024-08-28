@@ -53,7 +53,6 @@ public class Box : MonoBehaviour
     {
         StopAllCoroutines();
 
-        spawnPoint.GetComponent<ParticleSystem>().Stop();
         respawnable = false;
         particle.Stop();
         animator.Play("hide prompt");
@@ -65,7 +64,7 @@ public class Box : MonoBehaviour
 
     IEnumerator StopPopParticle()
     {
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(1.5f);
         spawnPoint.GetComponent<ParticleSystem>().Stop();
     }
 
