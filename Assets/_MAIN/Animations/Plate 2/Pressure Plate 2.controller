@@ -20,7 +20,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c42c9f13eba757441a154dc5ec55cb74, type: 2}
+  m_Motion: {fileID: 7400000, guid: 3c1031966bc3a2f4b9952b4015dd7cd1, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -32,7 +32,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Pressure Plate
+  m_Name: Pressure Plate 2
   serializedVersion: 5
   m_AnimatorParameters: []
   m_AnimatorLayers:
@@ -94,7 +94,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 449837d004fffef4fa1761010e25d7a4, type: 2}
+  m_Motion: {fileID: 7400000, guid: 9c1c1551a619a2e439c9029059279c97, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

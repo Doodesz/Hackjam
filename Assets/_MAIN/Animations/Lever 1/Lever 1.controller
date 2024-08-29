@@ -192,7 +192,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Lever
+  m_Name: Lever 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isEnabled
@@ -298,7 +298,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: e5621243681221445a22832d456398a0, type: 2}
+  m_Motion: {fileID: 7400000, guid: 0a6cfa8e59e246249908cb20258c9672, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -325,7 +325,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 7945e9bae2d08a4428f7a49bf0ea4505, type: 2}
+  m_Motion: {fileID: 7400000, guid: 5c53998c5305b3644946ac92a05aa032, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
