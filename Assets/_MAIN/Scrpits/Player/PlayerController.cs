@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
 
         if (rb.velocity.y < 0 && !isOnGround)
         {
-            anim.SetBool("isJumping", false);
+            //anim.SetBool("isJumping", false);
             anim.SetBool("isFalling", true);
         }
         else if (rb.velocity.y !> 0.01f)
@@ -71,9 +71,9 @@ public class PlayerController : MonoBehaviour
     private void Jump()
     {
         rb.AddForce(Vector3.up * jumpForce, ForceMode2D.Impulse);
+        anim.Play("jump");
         anim.SetBool("isJumping", true);
         anim.SetBool("isFalling", false);
-        anim.Play("jump");
     }
 
     public void ConnectShards(Shard otherShard)

@@ -2792,6 +2792,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2145675546}
     m_Modifications:
+    - target: {fileID: 995152211781058606, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 2591340872032534870, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
       propertyPath: m_Color.b
       value: 1
@@ -2901,7 +2905,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2753315654836624051, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1188675159280412904, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
@@ -3033,7 +3038,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2753315654836624051, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1188675159280412904, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}

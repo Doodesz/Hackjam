@@ -48,6 +48,7 @@ public class ShardLine : MonoBehaviour
             if (currLength > maxLength)
             {
                 shard.ResetAllWallsLayer();
+                GetComponent<Animator>().SetTrigger("isDrawing");
                 SnapLine(true);
             }
         }

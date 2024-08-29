@@ -29,6 +29,7 @@ public class Shard : MonoBehaviour
             if (!isConnected && PlayerController.Instance.currShard == null)
             {
                 PlayerController.Instance.currShard = this;
+                animator.SetTrigger("isDrawing");
                 shardLine.isDrawing = true;
                 MakeMatchingWallsIgnorePlayer();
             }
@@ -37,7 +38,9 @@ public class Shard : MonoBehaviour
             else if (isConnected && PlayerController.Instance.currShard == null)
             {
                 connectedShard.shardLine.SnapLine(true);
+                connectedShard.animator.SetBool("isConnected", false);
                 shardLine.SnapLine(true, true);
+                animator.SetBool("isConnected", false);
                 ResetAllWallsLayer();
             }
 
@@ -46,7 +49,9 @@ public class Shard : MonoBehaviour
                 && parent == PlayerController.Instance.currShard.parent)
             {
                 connectedShard.shardLine.SnapLine(triggerEvent: true);
+                connectedShard.animator.SetBool("isConnected", false);
                 shardLine.SnapLine();
+                //animator.SetBool("isConnected", false); still connected
                 PlayerController.Instance.ConnectShards(this);
                 ResetAllWallsLayer();
             }
@@ -55,6 +60,7 @@ public class Shard : MonoBehaviour
             else if (PlayerController.Instance.currShard == this)
             {
                 shardLine.SnapLine(true);
+                animator.SetTrigger("isDrawing");
                 ResetAllWallsLayer();
             }
 
@@ -62,7 +68,9 @@ public class Shard : MonoBehaviour
             else if (PlayerController.Instance.currShard != this
                 && parent == PlayerController.Instance.currShard.parent)
             {
+                PlayerController.Instance.currShard.animator.SetBool("isConnected", true);
                 PlayerController.Instance.ConnectShards(this);
+                animator.SetBool("isConnected", true);
                 ResetAllWallsLayer();
             }
         }
