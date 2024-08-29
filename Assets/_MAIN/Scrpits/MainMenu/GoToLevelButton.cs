@@ -15,7 +15,7 @@ public class GoToLevelButton : MonoBehaviour
 
     public void OnNewGameClick()
     {
-        GoToScene("Level 1");
+        GoToScene("Level 1.1");
     }
 
     public void OnSelectSceneClick()
@@ -32,6 +32,6 @@ public class GoToLevelButton : MonoBehaviour
 
     void GoToScene(string sceneName)
     {
-        mainMenuManager.GoToLevel(sceneDestName);
+        mainMenuManager.GoToLevel(sceneName);
     }
 }
