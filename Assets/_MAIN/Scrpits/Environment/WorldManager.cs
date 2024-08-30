@@ -1,7 +1,9 @@
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class WorldManager : MonoBehaviour
 {
@@ -36,6 +38,8 @@ public class WorldManager : MonoBehaviour
         {
             if (world != currWorld) gameObject.SetActive(false);
         }
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -43,6 +47,11 @@ public class WorldManager : MonoBehaviour
         // To trigger the actual world switch
         if (isChangingWorld && transition.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).IsName("blank"))
             ChangeWorld();
+    }
+
+    private void OnSceneLoaded(UnityEngine.SceneManagement.Scene arg0, LoadSceneMode arg1)
+    {
+        currWorld = GameObject.FindGameObjectWithTag("world");
     }
 
     public void EnterWorld(GameObject worldToEnable, string thisPortalName)

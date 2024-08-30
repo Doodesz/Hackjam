@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Shard : MonoBehaviour
 {
@@ -19,6 +20,8 @@ public class Shard : MonoBehaviour
         animator = GetComponent<Animator>();
         shardLine = GetComponent<ShardLine>();
         parent = transform.parent.gameObject;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     private void Update()
@@ -74,6 +77,13 @@ public class Shard : MonoBehaviour
                 ResetAllWallsLayer();
             }
         }
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        isConnected = false;
+        PlayerController.Instance.currShard = null;
+        shardLine.isDrawing = false;
     }
 
     public void MakeMatchingWallsIgnorePlayer()

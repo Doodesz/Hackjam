@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.PostProcessing.PostProcessResources;
 
 public class GameManager : MonoBehaviour
@@ -24,8 +25,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
         shards = GameObject.FindObjectsOfType<Shard>(includeInactive: true);
         shardCount = shards.Length;
+
     }
 
     public void UpdateProgress()
