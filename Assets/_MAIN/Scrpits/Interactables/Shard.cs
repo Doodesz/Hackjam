@@ -35,6 +35,7 @@ public class Shard : MonoBehaviour
                 animator.SetTrigger("isDrawing");
                 shardLine.isDrawing = true;
                 MakeMatchingWallsIgnorePlayer();
+                PlayerSFX.Instance.PlayDrawShard();
             }
 
             // If currently connected, snap it
@@ -57,6 +58,7 @@ public class Shard : MonoBehaviour
                 //animator.SetBool("isConnected", false); still connected
                 PlayerController.Instance.ConnectShards(this);
                 ResetAllWallsLayer();
+                PlayerSFX.Instance.PlayConnectShard();
             }
 
             // If interacting with the same shard, snap it
@@ -75,6 +77,7 @@ public class Shard : MonoBehaviour
                 PlayerController.Instance.ConnectShards(this);
                 animator.SetBool("isConnected", true);
                 ResetAllWallsLayer();
+                PlayerSFX.Instance.PlayConnectShard();
             }
         }
     }

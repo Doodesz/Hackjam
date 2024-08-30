@@ -6,6 +6,7 @@ public class EventObject : MonoBehaviour
 {
     public void TriggerEvent()
     {
+        PlayerSFX.Instance.PlayOpenWall();
         gameObject.SetActive(!gameObject.activeSelf);
     }
 }

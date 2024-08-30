@@ -42,6 +42,7 @@ public class EndPortal : MonoBehaviour
                 Debug.Log("Go to next level");
                 GoToNextLevel();
                 PlayerController.Instance.isIgnoringInput = true;
+                PlayerSFX.Instance.PlayEnterPortal();
             }
         }
 
@@ -65,7 +66,7 @@ public class EndPortal : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player") && isOpen)
         {
             canBeInteracted = true;
             animator.Play("show prompt");

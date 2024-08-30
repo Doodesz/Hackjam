@@ -25,6 +25,7 @@ public class Portal : MonoBehaviour
         if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
         {
             Debug.Log("Entered portal");
+            PlayerSFX.Instance.PlayEnterPortal();
             
             worldManager.EnterWorld(worldToEnter, name);
 

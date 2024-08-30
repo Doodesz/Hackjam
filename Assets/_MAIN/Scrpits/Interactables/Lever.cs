@@ -31,6 +31,7 @@ public class Lever : MonoBehaviour
 
     private void TriggerEvent()
     {
+        PlayerSFX.Instance.PlayLever();
         foreach (EventObject obj in objectsToTrigger)
         {
             obj.TriggerEvent();

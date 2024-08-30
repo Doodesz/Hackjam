@@ -17,6 +17,7 @@ public class Plate : MonoBehaviour
 
     private void TriggerEvent()
     {
+        PlayerSFX.Instance.PlayPressurePlate();
         foreach (EventObject obj in objectsToTrigger)
         {
             obj.TriggerEvent();

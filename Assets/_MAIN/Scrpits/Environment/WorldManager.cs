@@ -1,7 +1,4 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -85,6 +82,7 @@ public class WorldManager : MonoBehaviour
         targetWorld = null;
         targetPortalName = string.Empty;
         transition.TransitionOut();
+        PlayerSFX.Instance.PlayExitPortal();
     }
 
     Vector3 FindPortalPositionName(string portalName)

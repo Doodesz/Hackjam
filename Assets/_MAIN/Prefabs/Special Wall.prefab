@@ -183,7 +183,7 @@ GameObject:
   - component: {fileID: 7510016868623268628}
   m_Layer: 0
   m_Name: Special Wall
-  m_TagString: Untagged
+  m_TagString: special wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

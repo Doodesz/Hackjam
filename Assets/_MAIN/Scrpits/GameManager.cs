@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using static UnityEngine.Rendering.PostProcessing.PostProcessResources;
 
 public class GameManager : MonoBehaviour
-{
+{    
     [SerializeField] int shardCount;
     [SerializeField] int connectedShardCount;
     [SerializeField] Shard[] shards;
@@ -33,7 +33,6 @@ public class GameManager : MonoBehaviour
     {
         shards = GameObject.FindObjectsOfType<Shard>(includeInactive: true);
         shardCount = shards.Length;
-
     }
 
     public void UpdateProgress()

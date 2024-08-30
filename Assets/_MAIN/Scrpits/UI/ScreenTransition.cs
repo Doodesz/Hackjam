@@ -18,6 +18,7 @@ public class ScreenTransition : MonoBehaviour
         }
         Instance = this;
         DontDestroyOnLoad(gameObject);
+
     }
 
     private void Start()
@@ -25,6 +26,7 @@ public class ScreenTransition : MonoBehaviour
         animator = GetComponent<Animator>();
 
         SceneManager.sceneLoaded += OnSceneLoaded;
+        TransitionOut();
     }
 
     public void TransitionIn()
@@ -40,5 +42,6 @@ public class ScreenTransition : MonoBehaviour
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         TransitionOut();
+        //if (scene.name == "Main Menu") Destroy(gameObject);
     }
 }
