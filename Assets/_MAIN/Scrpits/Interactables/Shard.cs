@@ -26,7 +26,7 @@ public class Shard : MonoBehaviour
 
     private void Update()
     {
-        if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
+        if (canBeInteracted && Input.GetKeyDown(KeyCode.F) && !PlayerController.Instance.isIgnoringInput)
         {
             // If not currently drawing line, draw this shard's line
             if (!isConnected && PlayerController.Instance.currShard == null)

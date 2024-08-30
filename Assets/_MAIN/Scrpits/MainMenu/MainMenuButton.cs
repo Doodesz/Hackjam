@@ -7,6 +7,7 @@ public class MainMenuButton : MonoBehaviour
 {
     public GameObject mainMenuButton;
     public GameObject levelSelectButton;
+    public GameObject creditsScreen;
     
     [SerializeField] string sceneDestName;
     [SerializeField] MainMenuManager mainMenuManager;
@@ -18,7 +19,7 @@ public class MainMenuButton : MonoBehaviour
 
     public void OnNewGameClick()
     {
-        GoToScene("Level 1.1");
+        GoToScene("Intro");
     }
 
     public void OnSelectSceneClick()
@@ -44,15 +45,21 @@ public class MainMenuButton : MonoBehaviour
         Application.Quit();
     }
 
+    public void OnCreditsScreenClick()
+    {
+        mainMenuButton.SetActive(false);
+        creditsScreen.SetActive(true);
+    }
+
     public void OnReturnButtonClick()
     {
         mainMenuButton.SetActive(true);
         levelSelectButton.SetActive(false);
+        creditsScreen.SetActive(false);
         //settingsButton.SetActive(false);
-        //creditsButton.SetActive(false)
     }
 
-    void GoToScene(string sceneName)
+    public void GoToScene(string sceneName)
     {
         mainMenuManager.GoToLevel(sceneName);
     }

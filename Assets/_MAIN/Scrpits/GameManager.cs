@@ -33,6 +33,13 @@ public class GameManager : MonoBehaviour
     {
         shards = GameObject.FindObjectsOfType<Shard>(includeInactive: true);
         shardCount = shards.Length;
+
+        if (scene.name != "Main Menu")
+        {
+            PlayerPrefs.SetString("LastLevel", scene.name);
+            PlayerPrefs.Save();
+
+        }
     }
 
     public void UpdateProgress()

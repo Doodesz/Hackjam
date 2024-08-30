@@ -18,7 +18,7 @@ public class Lever : MonoBehaviour
 
     private void Update()
     {
-        if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
+        if (canBeInteracted && Input.GetKeyDown(KeyCode.F) && !PlayerController.Instance.isIgnoringInput)
         {
             isEnabled = !isEnabled;
             animator.SetBool("isEnabled", isEnabled);

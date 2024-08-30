@@ -18,7 +18,7 @@ public class BoxAnimationTrigger : MonoBehaviour
     {
         if (isNextToBox && PlayerController.Instance.isRunning && !PlayerSFX.Instance.isPlayingPush)
             PlayerSFX.Instance.PlayPush();
-        else if (PlayerSFX.Instance.isPlayingPush)
+        else
             PlayerSFX.Instance.StopPush();
     }
 

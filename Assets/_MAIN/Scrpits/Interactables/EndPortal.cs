@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -12,6 +13,7 @@ public class EndPortal : MonoBehaviour
     
     Animator animator;
     ScreenTransition transition;
+    ParticleSystem particle;
 
     public static EndPortal Instance;
 
@@ -24,18 +26,22 @@ public class EndPortal : MonoBehaviour
     {
         // Fix bug portal don't open when in another world
         if (isOpen)
+        {
             animator.SetBool("isOpened", true);
+            particle.Play();
+        }
     }
 
     private void Start()
     {
         animator = GetComponent<Animator>();
         transition = ScreenTransition.Instance;
+        particle = GetComponent<ParticleSystem>();
     }
 
     private void Update()
     {
-        if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
+        if (canBeInteracted && Input.GetKeyDown(KeyCode.F) && !PlayerController.Instance.isIgnoringInput)
         {
             if (isOpen)
             {
@@ -60,7 +66,11 @@ public class EndPortal : MonoBehaviour
     {
         isOpen = true;
         if (isActiveAndEnabled)
+        {
             animator.SetBool("isOpened", true);
+            particle.Play();
+
+        }
         Debug.Log("End Portal opened");
     }
 

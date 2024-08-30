@@ -22,7 +22,7 @@ public class Portal : MonoBehaviour
 
     private void Update()
     {
-        if (canBeInteracted && Input.GetKeyDown(KeyCode.F))
+        if (canBeInteracted && Input.GetKeyDown(KeyCode.F) && !PlayerController.Instance.isIgnoringInput)
         {
             Debug.Log("Entered portal");
             PlayerSFX.Instance.PlayEnterPortal();
