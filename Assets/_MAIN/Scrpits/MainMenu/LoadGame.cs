@@ -21,7 +21,8 @@ public class LoadGame : MonoBehaviour
 
         text.text = "Continue " + lastLevel;
 
-        if (lastLevel == null || lastLevel == string.Empty || lastLevel == "Main Menu")
+        if (lastLevel == null || lastLevel == string.Empty || lastLevel == "Main Menu"
+            || lastLevel == "To Be Continued")
         {
             GetComponent<Button>().interactable = false;
             text.text = "Continue Unavailable";

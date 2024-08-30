@@ -700,9 +700,12 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Game Programmer:\nRizqy (    doodez)\n\nGame Designer:\nIlman (   @zifu10)\n\nGame
+  m_text: "Game Programmer:\nRizqy (   doodez)\n\nGame Designer:\nIlman (   @zifu10)\n\nGame
     Artist:\nVani (   @shifani16_)\n\n<b><u>Assets</b></u>\nSound Effects: pixabay.com\nFont:
-    Dogica \xE0 \u20AC by Roberto Mocci\n\nMade in 6 days for Raion Hackjam 2024"
+    Dogica \xE0 \u20AC by Roberto Mocci\n\nBGM\nLevel 1 : \"in Dreamland\" - Chillpeach\nLevel
+    2 :\"@MiguelJohnson - Good Day to Die\" - BreakingCopyRight - Royalty Free Music\nLevel
+    3 : \"Hero's Valor\" - Infraction\nMain Menu : \"Mystic Forest!\"\_-\_HeatleyBros\n\nMade
+    in 6 days for Raion Hackjam 2024"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 18f2150237a32104a9afaf08bb87331a, type: 2}
   m_sharedMaterial: {fileID: -7415137429764395457, guid: 18f2150237a32104a9afaf08bb87331a, type: 2}
@@ -729,8 +732,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 42
-  m_fontSizeBase: 42
+  m_fontSize: 30.4
+  m_fontSizeBase: 30.4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1383,8 +1386,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -527, y: 190}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -594.7, y: 259.861}
+  m_SizeDelta: {x: 100, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &497396306
 MonoBehaviour:
@@ -1408,7 +1411,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 3dc730fb1355a2d44b3227e4c86eca1a, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1607,7 +1610,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &703115672
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2524,8 +2527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -566, y: 13}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -621.1, y: 132.1}
+  m_SizeDelta: {x: 100, y: 66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1010501901
 MonoBehaviour:
@@ -2549,7 +2552,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 3dc730fb1355a2d44b3227e4c86eca1a, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -2733,7 +2736,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1072782469
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3768,8 +3771,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -523, y: 368}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -601.6386, y: 387.32846}
+  m_SizeDelta: {x: 100, y: 54.376}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1316183234
 MonoBehaviour:
