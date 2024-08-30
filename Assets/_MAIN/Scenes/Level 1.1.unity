@@ -3109,6 +3109,10 @@ PrefabInstance:
       propertyPath: shardColor
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8651917214088908664, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
+      propertyPath: maxLength
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 8936392948651021371, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
       propertyPath: m_LocalPosition.x
       value: -15.5
@@ -3375,6 +3379,10 @@ PrefabInstance:
     - target: {fileID: 8518825124493813536, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
       propertyPath: objectsToTriggers.Array.data[0]
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8651917214088908664, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
+      propertyPath: maxLength
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 8936392948651021371, guid: 0e06c1b3122e3284f92a7ffa680bf972, type: 3}
       propertyPath: m_LocalPosition.x

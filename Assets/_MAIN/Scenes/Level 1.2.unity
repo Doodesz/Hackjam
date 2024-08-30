@@ -4798,15 +4798,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 505113804000600391, guid: c7da13dd3f71a214d9e0bac3f96d25ce, type: 3}
       propertyPath: dialogue.dialogueLines.Array.size
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 505113804000600391, guid: c7da13dd3f71a214d9e0bac3f96d25ce, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[0].line
-      value: Blocked, but I sense my memory is in there. Need to find another way.
+      value: <b>In your journey, you may encounter such walls.</b>
       objectReference: {fileID: 0}
     - target: {fileID: 505113804000600391, guid: c7da13dd3f71a214d9e0bac3f96d25ce, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[1].line
-      value: <b>In your journey, you may encounter such walls.</b>
+      value: <b>Take note of the glyph next to them as they are clues to unlocking
+        them.</b>
       objectReference: {fileID: 0}
     - target: {fileID: 505113804000600391, guid: c7da13dd3f71a214d9e0bac3f96d25ce, type: 3}
       propertyPath: dialogue.dialogueLines.Array.data[2].line
