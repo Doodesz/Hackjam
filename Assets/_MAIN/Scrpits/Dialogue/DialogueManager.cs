@@ -59,6 +59,8 @@ public class DialogueManager : MonoBehaviour
 
     public void DisplayNextDialogueLine()
     {
+        canNext = false;
+     
         if (lines.Count == 0)
         {
             EndDialogue();
@@ -72,7 +74,6 @@ public class DialogueManager : MonoBehaviour
         StartCoroutine(TypeSentence(currentLine));
 
         PlayerSFX.Instance.PlayNextDialogue();
-        canNext = false;
     }
 
     IEnumerator TypeSentence(DialogueLine dialogueLine)

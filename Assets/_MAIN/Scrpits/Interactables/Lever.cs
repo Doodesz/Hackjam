@@ -11,10 +11,15 @@ public class Lever : MonoBehaviour
 
     Animator animator;
 
-    private void Start()
+    private void Awake()
     {
         animator = GetComponent<Animator>();
     }
+
+/*    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }*/
 
     private void Update()
     {
@@ -27,6 +32,11 @@ public class Lever : MonoBehaviour
         }
 
         
+    }
+
+    private void OnEnable()
+    {
+        animator.SetBool("isEnabled", isEnabled);
     }
 
     private void TriggerEvent()
